@@ -15,6 +15,10 @@
     license_activated.json.license_status is not defined or
     license_activated.json.license_status != 'valid'
 
+- debug:
+    msg: "License: {{ license_activated.content }}"
+  when: license_activated.content is not undefined
+
 - name: Activate ES license (with security authentication)
   uri:
     method: PUT
@@ -35,3 +39,4 @@
 
 - debug:
     msg: "License: {{ license_activated.content }}"
+  when: license_activated.content is not undefined
